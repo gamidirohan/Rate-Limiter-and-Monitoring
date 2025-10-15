@@ -1,0 +1,136 @@
+@import "./breakpoints.scss";
+
+@mixin flex($jc, $ai, $gap) {
+  display: flex;
+  justify-content: $jc;
+  align-items: $ai;
+  gap: $gap;
+}
+
+@mixin flex_col($gap) {
+  flex-direction: column;
+  display: flex;
+  gap: $gap;
+}
+
+@function toRem($value) {
+  $remValue: (calc($value / 16)) + rem;
+  @return $remValue;
+}
+
+@mixin star {
+  &::before {
+    content: "";
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    background-image: url("data:image/svg+xml,%3Csvg width='48' height='48' viewBox='0 0 48 48' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M26.6667 0H21.3333V17.5621L8.91506 5.14382L5.14382 8.91506L17.5621 21.3333H0V26.6667H17.5621L5.14382 39.0849L8.91506 42.8562L21.3333 30.4379V48H26.6667V30.4379L39.0849 42.8562L42.8562 39.0849L30.4379 26.6667H48V21.3333H30.4379L42.8562 8.91506L39.0849 5.14382L26.6667 17.5621V0Z' fill='%23A37642'/%3E%3C/svg%3E%0A");
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    vertical-align: top;
+    margin-right: 1rem;
+    perspective: 100px;
+    animation: star-animation 4s linear infinite;
+    position: relative;
+    bottom: 0.5rem;
+    @include media("<=1300px") {
+      scale: 0.8;
+      margin-right: 0.5rem;
+    }
+    @include media("<=phone-tab") {
+      scale: 0.5;
+      margin-right: 0rem;
+    }
+  }
+}
+
+@mixin heading-2 {
+  font-size: 4rem;
+  color: $heading-text;
+  @include star;
+  @include media("<=phone-tab") {
+    font-size: toRem(43);
+    letter-spacing: -0.2px;
+  }
+}
+
+@mixin heading-4 {
+  font-size: toRem(35);
+  color: $heading-text;
+  font-weight: 700;
+  line-height: 2.5rem;
+  @include media("<=phone-tab") {
+    font-weight: 900;
+    font-size: toRem(25);
+    line-height: toRem(29);
+  }
+}
+
+@mixin cont {
+  width: 70%;
+  margin: 0 auto;
+  padding: 6rem 0;
+  @include flex_col(11rem);
+
+  a {
+    text-transform: uppercase;
+    font-size: toRem(23);
+    @include media("<=phone-tab") {
+      font-size: toRem(20);
+    }
+  }
+  @include media("<=tablet") {
+    width: 90%;
+    @include flex_col(10rem);
+  }
+  @include media("<=phone-tab") {
+    width: 100%;
+    @include flex_col(8rem);
+  }
+}
+
+@mixin link {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  text-decoration: none;
+  &::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    border-radius: 5px;
+    height: 0.05em;
+    bottom: 0;
+    left: 0;
+    background: $col-cream;
+    transform-origin: bottom right;
+    transition: transform 0.35s ease-out;
+  }
+  &:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+}
+
+@mixin mg_au {
+  margin: 0 auto;
+}
+
+@mixin ta_center {
+  text-align: center;
+}
+
+@mixin hero {
+  position: relative;
+  width: 100%;
+  align-items: center;
+  background-size: cover;
+  text-align: center;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  @include media("<=tablet") {
+    background-attachment: scroll;
+  }
+}
