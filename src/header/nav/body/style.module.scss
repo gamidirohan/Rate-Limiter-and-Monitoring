@@ -24,7 +24,18 @@
     }
   }
 
+  /* Also support theme toggles that add a global .dark class (app-controlled dark mode) */
+  :global(.dark) & {
+    a {
+      color: white;
+    }
+    p {
+      color: white;
+    }
+  }
+
   p {
+    color: #111827; // dark gray for light mode
     margin: 0px;
     display: flex;
     overflow: hidden;
