@@ -81,7 +81,7 @@ export function CreateKeyDialog({ onCreateKey, isCreating = false }) {
               />
             </div>
             <div className="grid gap-2">
-              <Label htmlFor="ownerEmail">Owner Email (optional)</Label>
+              <Label htmlFor="ownerEmail">Owner Email</Label>
               <Input
                 id="ownerEmail"
                 type="email"

@@ -3,7 +3,7 @@ import { requireAdminAuth } from "@/lib/api/auth"
 import { error, ok } from "@/lib/api/response"
 import { dashboardPayloadSchema } from "@/lib/api/schemas"
 import { ensureRedisConnected } from "@/lib/redis/client"
-import { getRecentEvents } from "@/lib/redis/events"
+import { getRecentEvents, getEventCount } from "@/lib/redis/events"
 import { listApiKeys } from "@/lib/db/api-keys"
 
 export async function GET(request: NextRequest) {
@@ -15,11 +15,13 @@ export async function GET(request: NextRequest) {
   try {
     await ensureRedisConnected()
 
-    // Get recent events
+    // Get the actual total count of events from Redis stream
+    const totalRequests = await getEventCount()
+
+    // Get recent events for analysis (last 1000 for performance)
     const events = await getRecentEvents(undefined, 1000)
 
-    // Calculate metrics
-    const totalRequests = events.length
+    // Calculate metrics from recent events
     const blockedRequests = events.filter((e) => e.status === 429).length
     const latencies = events
       .filter((e) => e.latencyMs && e.latencyMs > 0)

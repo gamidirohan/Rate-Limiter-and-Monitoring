@@ -44,6 +44,25 @@ export async function addEvent(event: RateLimitEvent): Promise<void> {
 }
 
 /**
+ * Get the total count of events in a stream
+ */
+export async function getEventCount(apiKey?: string): Promise<number> {
+  const redis = getRedisClient()
+  
+  const streamKey = apiKey
+    ? getEventsStreamKey(apiKey)
+    : getGlobalEventsStreamKey()
+  
+  try {
+    const length = await redis.xlen(streamKey)
+    return length
+  } catch (error) {
+    console.error("Error getting event count:", error)
+    return 0
+  }
+}
+
+/**
  * Get recent events from a stream
  */
 export async function getRecentEvents(

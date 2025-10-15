@@ -118,15 +118,7 @@ export default function Dashboard() {
               </TabsList>
               
               <TabsContent value="rps" className="mt-4">
-                <div className="mb-4 flex items-center justify-between">
-                  <p className="text-sm text-muted-foreground">Requests Per Second</p>
-                  <div className="text-right">
-                    <div className="text-2xl font-bold">
-                      {performance.length > 0 ? performance[performance.length - 1].rps : 0}
-                    </div>
-                    <div className="text-xs text-muted-foreground">Current RPS</div>
-                  </div>
-                </div>
+                  {/* Removed Current RPS display as requested */}
                 <ChartContainer config={chartConfig} className="h-[250px] w-full">
                   <LineChart data={performance}>
                     <CartesianGrid strokeDasharray="3 3" vertical={false} />
@@ -149,15 +141,7 @@ export default function Dashboard() {
               </TabsContent>
               
               <TabsContent value="latency" className="mt-4">
-                <div className="mb-4 flex items-center justify-between">
-                  <p className="text-sm text-muted-foreground">Response Latency (ms)</p>
-                  <div className="text-right">
-                    <div className="text-2xl font-bold">
-                      {latency.length > 0 ? latency[latency.length - 1].latency.toFixed(1) : 0}
-                    </div>
-                    <div className="text-xs text-muted-foreground">Current Latency</div>
-                  </div>
-                </div>
+                  {/* Removed Current Latency display as requested */}
                 <ChartContainer config={chartConfig} className="h-[250px] w-full">
                   <LineChart data={latency}>
                     <CartesianGrid strokeDasharray="3 3" vertical={false} />

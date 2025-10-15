@@ -52,8 +52,8 @@ export const apiKeySummarySchema = z.object({
     perDay: z.number().nonnegative(),
   }),
   usage: z.object({
-    minute: z.number().int().min(0).max(100),
-    day: z.number().int().min(0).max(100),
+    minute: z.number().int().min(0), // Can exceed 100% when over limit
+    day: z.number().int().min(0), // Can exceed 100% when over limit
   }),
   errors429: z.number().nonnegative(),
   lastSeen: z.string(),

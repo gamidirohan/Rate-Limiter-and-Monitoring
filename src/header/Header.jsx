@@ -37,7 +37,7 @@ function Header() {
             >
               <div className={styles.statusIndicator}>
                 <span className={styles.greenDot} />
-                <span className={styles.statusText}>Last 15 minutes</span>
+                <span className={styles.statusText}>Last 30 minutes</span>
               </div>
               <button 
                 className={styles.refreshBtn}

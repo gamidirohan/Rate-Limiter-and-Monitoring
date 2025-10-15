@@ -35,7 +35,7 @@ USE APP ROUTER (server components where possible, client for interactivity).
    * **Active Keys Panel:** progress bars per key (usage %)
    * **Recent Events Table:** timestamp, type, key, details (Allowed/Blocked)
    * **Top Offenders Table:** key vs. blocked requests
-   * **Header Controls:** refresh button, time-range selector (“Last 15 min”), auth status.
+   * **Header Controls:** refresh button, time-range selector (“Last 30 min”), auth status.
 
 2. **API Keys Page (/admin/keys)**
 
