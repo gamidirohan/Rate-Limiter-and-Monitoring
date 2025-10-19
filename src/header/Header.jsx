@@ -23,7 +23,7 @@ function Header() {
     <div className={styles.header}>
       <div className={styles.bar}>
         <Link href="/" className={styles.logo}>
-          {isDashboard ? 'Rate Limiter Dashboard' : 'Rate Limitr'}
+          {isDashboard ? 'Rate Limiter Dashboard' : 'Rate Limiter'}
         </Link>
 
         <div className={styles.rightSection}>

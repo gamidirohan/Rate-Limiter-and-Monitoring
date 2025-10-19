@@ -7,7 +7,7 @@ import { QueryProvider } from '@/components/providers/query-provider';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
-  title: 'Rate Limiter Dashboard',
+  title: 'Rate Limiter',
   description: 'Monitor and manage API rate limits',
 };
 
