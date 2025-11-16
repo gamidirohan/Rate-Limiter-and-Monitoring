@@ -18,6 +18,31 @@ You can start editing the page by modifying `app/page.js`. The page auto-updates
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
+
+## Docker Usage
+
+You can run the Redis service required for this project using Docker Compose:
+
+```bash
+docker-compose up -d
+```
+
+To build a Docker image for the Next.js app:
+
+```bash
+docker build -t rate-limiter-app .
+```
+
+To run the built Docker image:
+
+```bash
+docker run -p 3000:3000 --env-file .env.local rate-limiter-app
+```
+
+Make sure to configure your environment variables in `.env.local` as needed.
+
+---
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
